@@ -6,7 +6,6 @@ using Photon.Pun;
 public enum PickupType
 {
     Score
-
 }
 
 public class Pickup : MonoBehaviourPun

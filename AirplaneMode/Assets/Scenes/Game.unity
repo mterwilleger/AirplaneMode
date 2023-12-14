@@ -48313,7 +48313,7 @@ GameObject:
   - component: {fileID: 2102778588}
   - component: {fileID: 2102778587}
   - component: {fileID: 2102778586}
-  - component: {fileID: 2102778590}
+  - component: {fileID: 2102778591}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -48405,7 +48405,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2102778590
+--- !u!114 &2102778591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48414,11 +48414,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2102778585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d45f66b9912b02149972cf80b4ceedbf, type: 3}
+  m_Script: {fileID: 11500000, guid: e95af69742eae934bb4b477ddff3c419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 9086739143528736578, guid: 0d6c64e7758f24744ad9876873699f89, type: 3}
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 5755084}
+  winText: {fileID: 301490481}
+  winBackground: {fileID: 48549395}
 --- !u!1 &2105477420
 GameObject:
   m_ObjectHideFlags: 0
