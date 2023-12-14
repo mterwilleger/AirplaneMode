@@ -1,72 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using Photon.Pun;
+using Photon.Realtime;
+using TMPro.Examples;
 
-
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPun
 {
-    public float speed;
-    private Rigidbody rig;
-
-    private float startTime;
-    private float timeTaken;
-
-    private int collectabledPicked;
-    public int maxCollectables = 10;
-
-    public GameObject playButton;
-    public TextMeshProUGUI curTimeText;
-
-    private bool isPlaying;
+    [Header("Info")]
+    public int id;
 
 
-    void Awake()
+    [Header("Components")]
+    public Rigidbody rig;
+    public Player photonPlayer;
+
+
+    [PunRPC]
+    public void Initialize(Player player)
     {
-        rig = GetComponent<Rigidbody>();
+        id = player.ActorNumber;
+        photonPlayer = player;
+
+        GameManager.instance.players[id - 1] = this;
+
+       
+        // is this not our local player?
+        if (!photonView.IsMine)
+        {
+            GetComponentInChildren<Camera>().gameObject.SetActive(false);
+            rig.isKinematic = true;
+        }
+        //else
+        //{
+        //    GameUI.instance.Initialize(this);
+        //}
     }
 
     void Update()
     {
-        if (!isPlaying)
+        if (!photonView.IsMine)
             return;
 
-        float x = Input.GetAxis("Horizontal") * speed;
-        float z = Input.GetAxis("Vertical") * speed;
-
-        rig.velocity = new Vector3(x, rig.velocity.y, z);
-
-        curTimeText.text = (Time.time - startTime).ToString("F2");
+        //Move();
 
     }
 
-    public void Begin ()
-    {
-        startTime = Time.time;  
-        isPlaying = true;
-        playButton.SetActive(false);   
-    }
+    //void Move()
+    //{
+    //    float x = Input.GetAxis("Horizontal");
+    //    float z = Input.GetAxis("Vertical");
 
-    void End ()
-    {
-        timeTaken = Time.time - startTime;
-        isPlaying = false;
-        Leaderboard.instance.SetLeaderboardEntry(-Mathf.RoundToInt(timeTaken * 1000.0f));
-        playButton.SetActive(false);
-    }
+    //    Vector3 dir = (transform.forward * z + transform.right * x) * moveSpeed;
+    //    dir.y = rig.velocity.y;
 
-    void OnTriggerEnter (Collider other)
-    {
-        transform.localScale += new Vector3(0.10f, 0.10f, 0.10f);
-        //Debug.Log("TRIGGER");
-        if (other.gameObject.CompareTag("Collectable"))
-        {
-           
-            collectabledPicked++;
-            Destroy(other.gameObject);
-
-            if (collectabledPicked == maxCollectables)
-                End();
-        }
-    }
+    //    rig.velocity = dir;
+    //}
 }

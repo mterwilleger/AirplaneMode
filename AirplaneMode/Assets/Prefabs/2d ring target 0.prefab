@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2864435892489626204}
   - component: {fileID: 9146757698894942133}
   - component: {fileID: 4826324372037168563}
+  - component: {fileID: 566305603009210649}
   m_Layer: 0
   m_Name: 2d ring target 0
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &566305603009210649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4317009861157563550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2963e9f561d624ebc74b58e2b1448b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  value: 10
